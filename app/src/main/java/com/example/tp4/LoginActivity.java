@@ -35,10 +35,16 @@ public class LoginActivity extends AppCompatActivity {
                 if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
                     Toast.makeText(LoginActivity.this, "Veuillez entrer une adresse e-mail valide", Toast.LENGTH_SHORT).show();
                 }else{
-                    Intent intent = new Intent(LoginActivity.this, SuiteActivity.class);
-                    intent.putExtra("login",login);
-                    startActivity(intent);
-                    finish();
+
+                    if(login.isEmpty() || login.length()<3){
+                        Toast.makeText(LoginActivity.this, "Entrer un nom plus de 3 caractere", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Intent intent = new Intent(LoginActivity.this, SuiteActivity.class);
+                        intent.putExtra("login",login);
+                        startActivity(intent);
+                        finish();
+                    }
+
                 }
 
             }
