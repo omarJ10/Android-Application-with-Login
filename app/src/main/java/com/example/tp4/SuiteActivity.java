@@ -53,7 +53,6 @@ public class SuiteActivity extends AppCompatActivity {
                 finish();
             }
         });
-
         googleIt = findViewById(R.id.button4);
 
         googleIt.setOnClickListener(new View.OnClickListener() {

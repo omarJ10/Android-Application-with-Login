@@ -23,8 +23,6 @@ public class LoginActivity extends AppCompatActivity {
 
         editTextEmail = findViewById(R.id.editTextText2);
 
-        
-        
         id = findViewById(R.id.editText);
         button = findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
@@ -32,6 +30,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String login = id.getText().toString();
                 String email = editTextEmail.getText().toString();
+                UserData.getInstance().setUserEmail(email);
+
                 if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
                     Toast.makeText(LoginActivity.this, "Veuillez entrer une adresse e-mail valide", Toast.LENGTH_SHORT).show();
                 }else{
@@ -44,9 +44,7 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                     }
-
                 }
-
             }
         });
     }

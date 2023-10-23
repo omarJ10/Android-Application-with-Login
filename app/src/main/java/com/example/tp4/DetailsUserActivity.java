@@ -88,14 +88,16 @@ public class DetailsUserActivity extends AppCompatActivity {
             }
             private void sendEmail()
             {
-
                 String to = TOEditText.getText().toString();
                 String subject = subjectEditText.getText().toString();
                 String body = bodyEditText.getText().toString();
 
                 String[] adresses = to.split(",");
+
+                String userEmailAddress = UserData.getInstance().getUserEmail();
+
                 Intent emailIntent = new Intent(Intent.ACTION_SEND);
-                emailIntent.setData(Uri.parse("mailto:$adresses")); // Only email apps should handle this
+                emailIntent.setData(Uri.parse("mailto:" + userEmailAddress)); // Only email apps should handle this
                 emailIntent.putExtra(Intent.EXTRA_EMAIL, adresses);
                 emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
                 emailIntent.putExtra(Intent.EXTRA_TEXT, body);
